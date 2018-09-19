@@ -3,6 +3,9 @@ package com.github.githubapidemo.model;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * parse json
+ */
 public class DataBean implements Serializable{
     /**
      * total_count : 450508

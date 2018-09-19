@@ -11,8 +11,10 @@ import android.widget.TextView;
 import com.github.githubapidemo.R;
 import com.github.githubapidemo.model.DataBean;
 import com.github.githubapidemo.utils.Constants;
-import com.google.gson.JsonObject;
 
+/**
+ * RecyclerAdapter
+ */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemViewHolder> implements View.OnClickListener{
 
     private Context mContext;
@@ -30,7 +32,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     @Override
     public RecyclerAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
-        view.setOnClickListener(this);
+        view.setOnClickListener(this);//view支持点击
         return new ItemViewHolder(view);
     }
 

@@ -17,6 +17,9 @@ import com.github.githubapidemo.presenter.DataPresenter;
 import com.github.githubapidemo.utils.Constants;
 import com.github.githubapidemo.view.IDataView;
 
+/**
+ * Home Activity
+ */
 public class MainActivity extends AppCompatActivity implements IDataView, View.OnClickListener {
 
     private DataPresenter mPresenter;
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements IDataView, View.O
             @Override
             public void onItemClick(View view, DataBean.ItemsBean itemsBean) {
                 Constants.debug("onItemClick");
-                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                Intent intent = new Intent(MainActivity.this, InfoActivity.class);//点击跳转
                 intent.putExtra("data", itemsBean);
                 startActivity(intent);
             }
@@ -63,23 +66,31 @@ public class MainActivity extends AppCompatActivity implements IDataView, View.O
                 .VERTICAL));
     }
 
+    /**
+     * 这个是IDataView接口：因为在Presenter层已经传入了IDataView接口，并传递了DataBean给接口，所以这里就拿到了数据
+     * @param dataBean
+     */
     @Override
     public void setQueryData(DataBean dataBean) {
         Constants.debug("setQueryData");
         mDataBean = dataBean;
-        mAdapter.setDataBean(dataBean);
-        mAdapter.notifyDataSetChanged();
+        mAdapter.setDataBean(dataBean);//这里是将获得的数据传递给Adapter
+        mAdapter.notifyDataSetChanged();//并刷新显示
     }
 
+    /**
+     * 点击事件：参数是点击的view
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.search_btn:
                 String str = mEtSearch.getText().toString();
-                if (str.isEmpty()){
+                if (str.isEmpty()){//输入的数据是否为空
                     Toast.makeText(this, R.string.search_empty, Toast.LENGTH_SHORT).show();
                 }else {
-                    mPresenter.getData(str);
+                    mPresenter.getData(str);//这个是传递请求的数据给Presenter层
                 }
                 break;
             default:

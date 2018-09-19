@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import com.github.githubapidemo.model.DataBean;
 
+/**
+ * Detail Activity
+ */
 public class InfoActivity extends AppCompatActivity {
 
     private TextView mTvName;
