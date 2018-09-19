@@ -5,7 +5,7 @@ import com.github.githubapidemo.model.DataModel;
 import com.github.githubapidemo.view.IDataView;
 
 /**
- *inter-bedding-layer (MVP design pattern : M)
+ *inter-bedding-layer (MVP design pattern : P)
  */
 public class DataPresenter implements IDataPresenter {
 
